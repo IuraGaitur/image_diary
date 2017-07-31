@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="180dp"
+    android:layout_centerInParent="true"
+    android:layout_gravity="center"
+    android:background="@android:color/transparent">
+
+
+    <RelativeLayout
+        android:id="@+id/unregistered_menu"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/img_rounded"
+        android:visibility="visible"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/txt_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Information"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#333"/>
+
+        <TextView
+            android:id="@+id/txt_message_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_message"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:text="Created By Iurie Gaitur"
+            android:textColor="#333"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txt_message_desc"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="2dp"
+                android:background="@color/blue" />
+
+            <TextView
+                android:id="@+id/txt_timer"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:textColor="@color/blue"
+                android:text="Time Left: "/>
+
+            <Button
+                android:id="@+id/btn_close"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/txt_timer"
+                android:elevation="0dp"
+                android:text="Ok"
+                android:layout_margin="8dp"
+                android:background="@color/blue"
+                android:textColor="@android:color/white" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
