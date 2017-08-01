@@ -1,4 +1,4 @@
- Image Diary contains the follow features:
+** Image Diary contains the follow features:
 
  - Show random picture from repository
 
@@ -9,4 +9,6 @@
  - Show details of selected picture
 
  - Show popup with copyrights and countdown timer
+
+ Development process took : 4.5 hours
 
