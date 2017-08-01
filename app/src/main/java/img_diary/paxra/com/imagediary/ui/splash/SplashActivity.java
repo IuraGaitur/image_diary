@@ -36,6 +36,8 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
 
     SplashPresenter splashPresenter;
 
+    @Bind(R.id.main_layout) RelativeLayout mMainRlvView;
+
 
 
     @Override
@@ -54,9 +56,16 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
         finish();
     }
 
+
+
     @Override
     public Context getSplashContext() {
         return getApplicationContext();
+    }
+
+    @Override
+    public void showError() {
+        Snackbar.make(mMainRlvView, "No internet connection", 2000).show();
     }
 
 }

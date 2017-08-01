@@ -13,4 +13,6 @@ public interface SplashView {
     void showMainView();
 
     Context getSplashContext();
+
+    void showError();
 }

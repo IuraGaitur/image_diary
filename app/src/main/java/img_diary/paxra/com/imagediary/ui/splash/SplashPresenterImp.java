@@ -65,9 +65,9 @@ public class SplashPresenterImp implements SplashPresenter {
 
             subsription = retrofit.create(PictureService.class).getAllPictures().subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .doOnError(err -> Log.d("App", "Error no internet connection"))
+                    .doOnError(err -> splashView.showError())
                     .doOnSubscribe(() -> Log.d("TAG", "Subscribed"))
-                    .subscribe(pictures -> savePictures(pictures), err -> Log.d("App", "Error no internet connection"));
+                    .subscribe(pictures -> savePictures(pictures), err -> splashView.showError());
         }else {
             splashView.showMainView();
         }
