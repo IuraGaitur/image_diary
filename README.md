@@ -10,5 +10,9 @@
 
  - Show popup with copyrights and countdown timer
 
- Development process took : 4.5 hours
+ - Added ORM for data storage
+
+ - Added splash screen for storing picture local
+
+ Development process took : 7.5 hours
 
