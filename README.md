@@ -1,4 +1,4 @@
-** Image Diary contains the follow features:
+ Image Diary contains the follow features:
 
  - Show random picture from repository
 

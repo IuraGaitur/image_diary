@@ -1,6 +1,10 @@
 package img_diary.paxra.com.imagediary.ui.main;
 
+import android.os.AsyncTask;
 import android.util.Log;
+
+import com.activeandroid.query.Select;
+import com.activeandroid.query.Update;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,25 +45,9 @@ public class MainPresenterImp implements MainPresenter {
     @Override
     public void loadPictures() {
         if (PictureStorage.pictureList == null) {
-
-            subsription = retrofit.create(PictureService.class).getAllPictures().subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doOnError(err -> mainView.showError("No internet connection. Please turn on internet"))
-                    .doOnSubscribe(() -> Log.d("TAG", "Subscribed"))
-                    .subscribe(pictures -> {
-                                List<Picture> pictureList = new ArrayList<>();
-                                for (int pos = 0 ;pos < pictures.size(); pos++) {
-                                    Picture pic = new Picture(pictures.get(pos));
-                                    pic.setId(pos);
-                                    pictureList.add(pic);
-                                }
-                                PictureStorage.pictureList = pictureList;
-                                this.loadRandomPicture();
-                            }, err -> {
-                                mainView.showError("No internet connection. Please turn on internet");
-                            }
-                    );
-
+            List<Picture> allPics = new Picture().getAll();
+            PictureStorage.pictureList = allPics;
+            loadRandomPicture();
         }
     }
 
@@ -84,6 +72,8 @@ public class MainPresenterImp implements MainPresenter {
     public void saveSelected(String label) {
         if(PictureStorage.pictureList != null && PictureStorage.pictureList.size() > 0) {
             PictureStorage.pictureList.get(randomPicPosition).setLabel(label);
+            //save image label
+            new PictureSaving().execute(PictureStorage.pictureList.get(randomPicPosition));
             mainView.showListView();
         }
     }
@@ -93,6 +83,21 @@ public class MainPresenterImp implements MainPresenter {
         if (PictureStorage.pictureList != null) {
             Picture picture = PictureStorage.pictureList.get(position);
             mainView.showPicture(picture);
+        }
+    }
+
+
+    private class PictureSaving extends AsyncTask<Picture, Integer, Picture> {
+
+
+        @Override
+        protected Picture doInBackground(Picture... pictures) {
+            Picture picture = pictures[0];
+
+            Picture updatePicture = Picture.load(Picture.class, picture.getId());//1 is the id
+            updatePicture.setLabel(picture.getLabel());
+            updatePicture.save();
+            return picture;
         }
     }
 }

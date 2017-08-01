@@ -115,10 +115,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     private void checkIntentForData(Intent intent) {
         if(intent.getExtras() != null) {
-            int position = intent.getExtras().getInt(TAG_ITEM, -1);
+            Picture picture = (Picture) intent.getExtras().getSerializable(TAG_ITEM);
 
-            if(position > -1) {
-                mainPresenter.loadPictureWithID(position);
+            if(picture != null) {
+                showPicture(picture);
             }else {
                 mainPresenter.loadPictures();
             }

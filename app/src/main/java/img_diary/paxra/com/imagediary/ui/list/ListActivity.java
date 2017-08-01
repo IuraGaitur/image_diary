@@ -47,7 +47,7 @@ public class ListActivity extends AppCompatActivity implements ListView, Adapter
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         Intent intent = new Intent(this, MainActivity.class);
         Picture picture = (Picture) mListPics.getAdapter().getItem(position);
-        intent.putExtra(MainActivity.TAG_ITEM, picture.getId());
+        intent.putExtra(MainActivity.TAG_ITEM, picture);
         startActivity(intent);
     }
 }
