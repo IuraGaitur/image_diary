@@ -55,7 +55,7 @@ public class MainPresenterImp implements MainPresenter {
     public void loadRandomPicture() {
         Picture picture = null;
 
-        if (PictureStorage.pictureList != null) {
+        if (PictureStorage.pictureList != null && PictureStorage.pictureList.size() > 0) {
             Random r = new Random();
             int size = PictureStorage.pictureList.size();
             int randomIndex = r.nextInt(size);

@@ -100,6 +100,7 @@ public class SplashPresenterImp implements SplashPresenter {
 
                         //Save pictures in database
                         picture.setPath(filePath);
+                        picture.save();
                         downloadedImages++;
 
                         Log.d("Picture", "Loaded time : " + downloadedImages);
